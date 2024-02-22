@@ -1,0 +1,71 @@
+[
+    {
+        "id": "123456789",
+        "name": "zambrano",
+        "integrantes": [
+            {
+                "cedula": "10090009",
+                "nombre": "Piedad",
+                "telefono": [
+                    {
+                        "movil": "3147856912",
+                        "fijo": "00078158000"
+                    }
+                ]
+            },
+            {
+                "cedula": "231230035",
+                "nombre": "Luis",
+                "telefono": [
+                    {
+                        "movil": "31515158745",
+                        "fijo": "01800580780"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "5782148937",
+        "name": "guerra",
+        "integrantes": [
+            {
+                "cedula": "15980048",
+                "nombre": "Gladys",
+                "telefono": [
+                    {
+                        "movil": "3201885697",
+                        "fijo": "00059631478"
+                    }
+                ]
+            },
+            {
+                "cedula": "107626894",
+                "nombre": "Mery",
+                "telefono": "0036974512"
+            }
+        ]
+    },
+    {
+        "id": "89761234",
+        "name": "ortiz",
+        "integrantes": [
+            {
+                "cedula": "1435452",
+                "nombre": "Mariela",
+                "telefono": [
+                    {
+                        "movil": "3403412134",
+                        "fijo": "42414231"
+                    }
+                ]
+            },
+            {
+                "cedula": "434345114",
+                "nombre": "Fabio",
+                "telefono": "140904143"
+            }
+        ]
+    }
+
+]
