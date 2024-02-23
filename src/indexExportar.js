@@ -30,30 +30,57 @@ fs.readFile('src/json/familia.json', 'utf8', (err, jsonString) => {
     
         data.forEach(item => {
             let headers = [];
+            // for (let integrante of item.integrantes) {
+            //     for (const a in integrante) {
+            //         headers.push(a);
+            //         if(a == 'telefono') {
+            //             const tel = integrante['telefono'];
+            //             for( const te in tel){
+            //                 console.log(te);
+            //                 let i = 0;
+            //                 for(const t in tel[te]) {
+            //                    console.log(tel[te][t]);
+            //                     ++i;
+            //                     if(i == 1) {
+            //                         headers[headers.length - 1] = a + ' ' + t;
+            //                     }else {
+            //                         headers.push(a + ' ' + t);
+            //                     }
+            //                 }
+            //             }
+                        
+            //         }
+            //     }
+            //     //console.log(headers);
+            //     break;
+            // }
+
             for (let integrante of item.integrantes) {
                 for (const a in integrante) {
                     headers.push(a);
-                    if(a == 'telefono') {
+                    if (a == 'telefono') {
                         const tel = integrante['telefono'];
-                        for( const te in tel){
-                            let i = 0;
+                        for ( const te in tel){
                             for(const t in tel[te]) {
-                                ++i;
-                                if(i == 1) {
-                                    headers[headers.length - 1] = a + ' ' + t;
-                                }else {
-                                    headers.push(a + ' ' + t);
+                                let i = 0;
+                                for (const len in tel[te][t]) {
+                                    ++i;
+                                    if(len) {
+                                        headers.push( te + ' ' + len);
+                                    }
                                 }
+                               
                             }
                         }
                         
                     }
                 }
-                console.log(headers);
                 break;
             }
 
-           
+            headers.splice(2,1);
+            //console.log(headers);
+
             console.log(' ');
             item.integrantes.forEach(integrante => {
 
@@ -62,15 +89,30 @@ fs.readFile('src/json/familia.json', 'utf8', (err, jsonString) => {
                 const telefono = integrante.telefono;
                 let i = 0;
 
-                for (const tel of telefono) {
-                    if (tel.movil || tel.fijo) {
-                        values[values.length - 1].push(tel.movil, tel.fijo)
-                        i++;
+                if (telefono.lista) {
+                    for (const lista of telefono.lista) {
+                        if (lista.movil) {
+                            values[values.length - 1].push(lista.movil)
+                            i++;
+                        }
+                        if (lista.fijo) {
+                            values[values.length - 1].push(lista.fijo)
+                            i++;
+                        }
                     }
                 }
-                if (i == 0) {
 
-                    values[values.length - 1].push(telefono);
+                if (telefono.texto) {
+                    for (const texto of telefono.texto) {
+                        if (texto.movil) {
+                            values[values.length - 1].push(texto.movil)
+                            i++;
+                        }
+                        if (texto.fijo) {
+                            values[values.length - 1].push(texto.fijo)
+                            i++;
+                        }
+                    }
                 }
             });
 
