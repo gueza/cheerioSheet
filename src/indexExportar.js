@@ -30,30 +30,6 @@ fs.readFile('src/json/familia.json', 'utf8', (err, jsonString) => {
     
         data.forEach(item => {
             let headers = [];
-            // for (let integrante of item.integrantes) {
-            //     for (const a in integrante) {
-            //         headers.push(a);
-            //         if(a == 'telefono') {
-            //             const tel = integrante['telefono'];
-            //             for( const te in tel){
-            //                 console.log(te);
-            //                 let i = 0;
-            //                 for(const t in tel[te]) {
-            //                    console.log(tel[te][t]);
-            //                     ++i;
-            //                     if(i == 1) {
-            //                         headers[headers.length - 1] = a + ' ' + t;
-            //                     }else {
-            //                         headers.push(a + ' ' + t);
-            //                     }
-            //                 }
-            //             }
-                        
-            //         }
-            //     }
-            //     //console.log(headers);
-            //     break;
-            // }
 
             for (let integrante of item.integrantes) {
                 for (const a in integrante) {

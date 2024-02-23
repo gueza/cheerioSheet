@@ -62,12 +62,21 @@ function actualizarInformacion(sheets) {
         try {
 
             const familia = JSON.parse(data);
+            let sheetsArray = []; 
+            
+            // sheets.forEach(sheet => {
+            //     sheet.values.slice(1).map(row => {
+            //         sheetsArray.push(row[0]);
+            //     })
+            // })
+
+            // console.log(sheetsArray);
+            // return;
 
             sheets.forEach(sheet => {
                 const index = familia.findIndex(item => item.name === sheet.sheet);
 
                 if (index !== -1) {
-
                     const integrantes = sheet.values.slice(1).map(row => {
                         const integrante = {
                             cedula: row[0],
@@ -75,7 +84,6 @@ function actualizarInformacion(sheets) {
                             telefono: {
                             }
                         };
-
 
                         let choose = [];
                         for (const e of sheet.values) {
@@ -91,29 +99,40 @@ function actualizarInformacion(sheets) {
                         if (choose.find(element => element == 'lista movil') || choose.find(element => element == 'lista fijo')) {
                             name1 = integrante.telefono.lista = [];
                             name2 = integrante.telefono.lista;
-                        }else{
+                        } else {
                             name1 = integrante.telefono.texto = [];
                             name2 = integrante.telefono.texto;
                         }
 
                         for (let i = 2; i < row.length; i++) {
-                            
+
                             if (row[i]) {
                                 if (!integrante.telefono.lista) name1;
-                                    if (choose[i].includes('movil')) {
-                                        name2.push({ movil: row[i] });
-                                    } else {
-                                        name2.push({ fijo: row[i] });
-                                    } 
+                                if (choose[i].includes('movil')) {
+                                    name2.push({ movil: row[i] });
+                                } else {
+                                    name2.push({ fijo: row[i] });
+                                }
                             }
                         }
 
                         return integrante;
                     });
-
-                    familia[index].integrantes = integrantes;
                 }
+
+                // if (index !== -1) {
+                //     familia[index].integrantes = integrantes;
+                // } else {
+                //     familiaJson = {
+                //         id: '875',
+                //         name: sheet.sheet,
+                //         integrantes: integrantes
+                //     }
+
+                //     familia[familia.length] = familiaJson;
+                // }
             });
+
 
             fs.writeFile('src/json/familia.json', JSON.stringify(familia, null, 2), err => {
                 if (err) {
