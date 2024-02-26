@@ -1,0 +1,198 @@
+[
+  {
+    "id": "gebaerden",
+    "primaryText": {
+      "de": "Gebärden",
+      "en": "Hand signs"
+    },
+    "categoryText": {
+      "de": "Gebärden",
+      "en": "Hand signs"
+    },
+    "selected": 0,
+    "interactionType": "vs",
+    "cards": [
+      {
+        "id": "a6a39a59-d8c2-47a4-b4dc-d6ee2941b5db",
+        "data": {
+          "videos": [
+            "schildkroete",
+            "windeln-wechseln"
+          ],
+          "listItems": [
+            {
+              "de": "Schildkröte",
+              "en": "en1"
+            },
+            {
+              "de": "Windel wechseln",
+              "en": "en2"
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      },
+      {
+        "id": "da3e7cf4-eac7-49d4-82d4-cc174d26eb2d",
+        "data": {
+          "videos": [
+            "party",
+            "skateboard"
+          ],
+          "listItems": [
+            {
+              "de": "Party",
+              "en": "en3"
+            },
+            {
+              "de": "Skateboard",
+              "en": "en4"
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      },
+      {
+        "id": "b47aa1d9-f3b3-4f41-99cb-b6bafd3be827",
+        "data": {
+          "videos": [
+            "bier",
+            "wein"
+          ],
+          "listItems": [
+            {
+              "de": "bier",
+              "en": "en5"
+            },
+            {
+              "de": "wein dsdas",
+              "en": "en6"
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      },
+      {
+        "id": 123,
+        "data": {
+          "listItems": [
+            {
+              "de": "asa",
+              "en": "asa"
+            },
+            {
+              "de": "asa",
+              "en": "asa"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ich_hab_noch_nie",
+    "primaryText": {
+      "de": "Ich hab noch nie...",
+      "en": "Never ever have I..."
+    },
+    "categoryText": {
+      "de": "Ich hab noch nie... (Classic Edition)",
+      "en": "Never ever have I... (Classic Edition)"
+    },
+    "selected": 0,
+    "interactionType": "group",
+    "cards": [
+      {
+        "id": "6afe9a73-01d8-497b-bc64-3971150ec49e",
+        "data": {
+          "text": [
+            {
+              "de": "ein Date mit einer Ausrede abgebrochen."
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      },
+      {
+        "id": "22fdf7c0-6610-4619-b48c-ef016137fde4",
+        "data": {
+          "text": [
+            {
+              "de": "jemanden vom gleichen Geschlecht auf den Mund geküsst."
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      }
+    ]
+  },
+  {
+    "id": "wahrheit_oder_strafe",
+    "primaryText": {
+      "de": "Wahrheit oder Strafe",
+      "en": "Truth or penalty"
+    },
+    "categoryText": {
+      "de": "Wahrheit oder Strafe (Classic Edition)",
+      "en": "Truth or penalty (Classic Edition)"
+    },
+    "selected": 0,
+    "interactionType": "single",
+    "cards": [
+      {
+        "id": "3ee9b041-1b11-4404-b95d-a4137b6c9171",
+        "data": {
+          "text": [
+            {
+              "de": "Was war der peinlichste Moment deines Lebens? Eine Strafe, wenn jemand anders deine Story toppen kann.",
+              "en": "What was the most embarrassing moment of your life? A penalty if someone else can top your story."
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      },
+      {
+        "id": "98398fe5-ca8d-447b-8ff7-a8d91b2c025c",
+        "data": {
+          "text": [
+            {
+              "de": "Wenn Du dir ein Tattoo stechen lassen müsstest, was wäre es und wieso? "
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      },
+      {
+        "id": "0be00657-b240-4652-a342-4643f2c9b4bf",
+        "data": {
+          "text": [
+            {
+              "de": "Auf einer Skala von 1-10 wie eifersüchtig bist Du?"
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      },
+      {
+        "id": "d572375d-805d-4085-bfa7-414a417e3001",
+        "data": {
+          "text": [
+            {
+              "de": "Mit welcher/welchem Ex würdest du am ehesten noch einmal etwas anfangen?"
+            }
+          ]
+        },
+        "hidden": false,
+        "deletable": false
+      }
+    ]
+  }
+]

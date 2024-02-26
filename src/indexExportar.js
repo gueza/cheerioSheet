@@ -17,7 +17,7 @@ const auth = new google.auth.GoogleAuth({
 let sheets = google.sheets({ version: 'v4', auth });
 
 // Leer el archivo JSON
-fs.readFile('src/json/familia.json', 'utf8', (err, jsonString) => {
+fs.readFile('src/json/cards-data.json', 'utf8', (err, jsonString) => {
     if (err) {
         console.log('Error al leer el archivo JSON:', err);
         return;
@@ -27,74 +27,83 @@ fs.readFile('src/json/familia.json', 'utf8', (err, jsonString) => {
         const data = JSON.parse(jsonString);
 
         let values = [];
-    
+
         data.forEach(item => {
             let headers = [];
 
-            for (let integrante of item.integrantes) {
-                for (const a in integrante) {
-                    headers.push(a);
-                    if (a == 'telefono') {
-                        const tel = integrante['telefono'];
-                        for ( const te in tel){
-                            for(const t in tel[te]) {
-                                let i = 0;
-                                for (const len in tel[te][t]) {
-                                    ++i;
-                                    if(len) {
-                                        headers.push( te + ' ' + len);
+            for (let card of item.cards) {
+                headers.push('id');
+                for (const a in card) {
+                    if (a == 'data') {
+                        const data = card['data'];
+                        for (const da in data) {
+                            if (da == 'listItems') {
+                                for (const t in data[da]) {
+                                    for (const len in data[da][t]) {
+                                        if (len) {
+                                            headers.push(da + ' ' + len);
+                                        }
                                     }
+
                                 }
-                               
                             }
                         }
-                        
+                    }
+                }
+
+                if (card.data.text) {
+                    if (card.data.text['de']) {
+                        headers.push('text de')
+                    }
+
+                    if (card.data.text['en']) {
+                        headers.push('text en')
                     }
                 }
                 break;
             }
 
-            headers.splice(2,1);
+            // headers.splice(2,1);
             //console.log(headers);
 
             console.log(' ');
-            item.integrantes.forEach(integrante => {
+            item.cards.forEach(card => {
 
-                values.push([integrante.cedula, integrante.nombre]);
+                values.push([card.id]);
 
-                const telefono = integrante.telefono;
+                const data = card.data;
                 let i = 0;
 
-                if (telefono.lista) {
-                    for (const lista of telefono.lista) {
-                        if (lista.movil) {
-                            values[values.length - 1].push(lista.movil)
+                if (data.listItems) {
+                    for (const list of data.listItems) {
+                        if (list.de) {
+                            values[values.length - 1].push(list.de)
                             i++;
                         }
-                        if (lista.fijo) {
-                            values[values.length - 1].push(lista.fijo)
+                        if (list.en) {
+                            values[values.length - 1].push(list.en)
                             i++;
                         }
                     }
                 }
 
-                if (telefono.texto) {
-                    for (const texto of telefono.texto) {
-                        if (texto.movil) {
-                            values[values.length - 1].push(texto.movil)
-                            i++;
-                        }
-                        if (texto.fijo) {
-                            values[values.length - 1].push(texto.fijo)
-                            i++;
-                        }
+                if (data.text) {
+                    // for (const text of data.text) {
+                    if (data.text.de) {
+                        values[values.length - 1].push(data.text.de)
+                        i++;
                     }
+                    if (data.text.en) {
+                        values[values.length - 1].push(data.text.en)
+                        i++;
+                    }
+                    // }
                 }
             });
 
             values.unshift(headers);
 
-            updateSheet(values, item.name);
+            updateSheet(values, item.id);
             values = [];
         });
 
