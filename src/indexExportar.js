@@ -38,10 +38,13 @@ fs.readFile('src/json/cards-data.json', 'utf8', (err, jsonString) => {
                         const data = card['data'];
                         for (const da in data) {
                             if (da == 'listItems') {
+                                console.log((data[da]));
+                                let i = 0;
                                 for (const t in data[da]) {
+                                    ++i;
                                     for (const len in data[da][t]) {
                                         if (len) {
-                                            headers.push(da + ' ' + len);
+                                            headers.push(da + ' ' + i + ' ' +len);
                                         }
                                     }
 
@@ -64,7 +67,6 @@ fs.readFile('src/json/cards-data.json', 'utf8', (err, jsonString) => {
             }
 
             // headers.splice(2,1);
-            //console.log(headers);
 
             console.log(' ');
             item.cards.forEach(card => {
@@ -88,7 +90,6 @@ fs.readFile('src/json/cards-data.json', 'utf8', (err, jsonString) => {
                 }
 
                 if (data.text) {
-                    // for (const text of data.text) {
                     if (data.text.de) {
                         values[values.length - 1].push(data.text.de)
                         i++;
@@ -97,7 +98,6 @@ fs.readFile('src/json/cards-data.json', 'utf8', (err, jsonString) => {
                         values[values.length - 1].push(data.text.en)
                         i++;
                     }
-                    // }
                 }
             });
 
@@ -122,7 +122,7 @@ async function updateSheet(values, sheetName) {
 
         await sheets.spreadsheets.values.update({
             spreadsheetId: spreadsheetId,
-            range: `${sheetName}!A1`, // Rango donde quieres escribir los datos
+            range: `${sheetName}!A1`,
             valueInputOption: 'RAW',
             resource: {
                 values: values
@@ -144,10 +144,10 @@ async function checkIfSheetExists(sheetName) {
         const sheet = response.data.sheets;
         for (const sh of sheet) {
             if (sh.properties.title === sheetName) {
-                return true; // La hoja existe
+                return true; 
             }
         }
-        return false; // La hoja no existe
+        return false; 
     } catch (err) {
         throw err;
     }
@@ -176,5 +176,4 @@ async function createSheet(sheetName) {
     }
 }
 
-// Llamada a la función principal para escribir los datos
 
