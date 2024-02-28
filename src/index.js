@@ -98,7 +98,7 @@ function actualizarInformacion(sheets) {
                                 const newId = crypto.randomUUID();
                                 cards[index].cards.push({ id: newId });
     
-                                cardSheetIndex = cards[index].cards.findIndex(card => card.id === newId);
+                                cardSheetIndex = cards[index].cards.findIndex(card => card.id === newId); // para saber en qué posición quedó el nuevo id
                                 const split = titleSheet[1].split(" ");
     
                                 cards[index].cards[cardSheetIndex].data = {};
@@ -131,12 +131,12 @@ function actualizarInformacion(sheets) {
                                 const nuevoElemento = {};
                                 if (i !== 0) {
                                     const split = titleSheet[i].split(" ");
-                                    const indexInternoTemporal = card.data.listItems ? split[1] : 0;
-                                    const indexInternoNuevo = card.data.listItems ? split[2] : split[1];
+                                    const indexInternoTemporal = card.data.listItems ? split[1] : 0; //posición está listitem 1 en -> tomo es 1
+                                    const indexInternoNuevo = card.data.listItems ? split[2] : split[1]; // tomo el idioma
 
-                                    nuevoElemento[indexInternoNuevo] = item;
+                                    nuevoElemento[indexInternoNuevo] = item; // voy armando el json interno con el idioma "de: bababab"
 
-                                    if (!arrayTemporal[indexInternoTemporal]) {
+                                    if (!arrayTemporal[indexInternoTemporal]) { // se pregunta si no tiene un indice, sino tiene se inicia uno
                                         arrayTemporal[indexInternoTemporal] = [];
                                     }
                                     arrayTemporal[indexInternoTemporal].push(nuevoElemento);
